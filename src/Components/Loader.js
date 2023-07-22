@@ -14,6 +14,7 @@ const Loader = () => {
         <div className="loading d-flex flex-column g-3 justify-content-center align-items-center">
             <motion.img className='loader-img'
             src={cloudLoader}
+           
             alt=""
             variants={imgAnimate}
             animate='animate'

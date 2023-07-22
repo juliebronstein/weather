@@ -67,20 +67,12 @@ justify-content: space-between;
   color: rgba(255, 255, 255, 0.7) ;
 }
 
-.search-city-content , .weather-content-left{
+.search-city-content , .weather-content{
   background-color: rgba(250, 250, 250, 0.15) ;
-  /* box-shadow: rgb(238, 238, 238) 0px 3px 6px 0px; */
-  width: 50%; 
- margin-right: 5px;
+ /* margin-right: 5px; */
 
 }
-.search-city-content , .weather-content-right{
-  background-color: rgba(250, 250, 250, 0.15) ;
-  /* box-shadow: rgb(238, 238, 238) 0px 3px 6px 0px; */
-  width: 50%; 
-   margin-left: 5px;
 
-}
 .header{
   color: rgba(255, 255, 255, 0.7) ;
 }

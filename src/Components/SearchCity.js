@@ -70,11 +70,10 @@ const SearchCity = () => {
                     <button className='my-btn'> Search</button>
                 </InputGroup>
             </form>
-            {weather?   <div className='d-flex flex-row'>
-                <div className='col-sm-12'>
-            <Weather weather={weather} notFound={notFound}/></div>
-            <div className='col-sm-12'>
-            <Forecast weather={weather} notFound={notFound}/></div>
+            {weather?   
+            <div className='d-flex justify-content-center flex-column flex-lg-row '>
+            <Weather weather={weather} notFound={notFound}/>
+            <Forecast weather={weather} notFound={notFound}/>
             </div>:  (
             notFound ? <NotFound/>:<Loader/>
         ) }

@@ -64,7 +64,7 @@ const Weather = ({weather,notFound}) => {
     return ( 
       
             <motion.div 
-            className="weather-content-left d-flex flex-column justify-content-center text-center p-3 g-3"
+            className="weather-content me-lg-1 mb-sm-1 col-12  col-lg-6 d-flex flex-column  justify-content-center text-center p-3 g-3"
             variants={weatherVariants}
             initial='hidden'
             animate='visible'
