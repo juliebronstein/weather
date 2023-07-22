@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url(utils/img/Back.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background:-webkit-linear-gradient(64deg, rgba(4,12,51,1) 0.14%, rgba(5,70,168,1) 99.61% ); */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.navbar-brand {
+  color:white !important;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+  text-align: center;
+  padding: 0% !important;
+  margin: 0% !important;
+  align-items: baseline;
+
+}
+.app-name{
+  width: 15%;
+    }
+    .app-name img{
+    max-width:100%;
+    }
+    .app-logo{
+      width: 10%;
+    }
+    .app-logo img{
+      max-width: 20%;
+    }
+  .navbar-brand .date{
+    width: 70%;
+  }
+.App {
+  border: 1px solid rgb(167, 182, 231);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 40px 50px;
+  box-shadow:0 5px 50px 2px rgb(96, 111, 161);
+  padding: 30px 30px;
+  /* -webkit-box-shadow: 0 10px 50px px rgba(12,12,12,12); */
+}
+
+.search-city-content , .weather-content {
+  background-color: white;
+  box-shadow: rgb(85, 85, 85) 0px 3px 6px 0px;
+  max-width: 400px; 
+}
+
+.my-btn {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+input.form-control:focus{
+    outline: none;
+    border: 1px solid black;
+    box-shadow: none;
+}
+
+.weather-img {
+  height:100px;
+  width:100px;
+}
+
+.loader-img {
+  width: 200px;
+  height: 200px;
+}
+.not-found-img {
+  width: 200px;
+  height: 150px;
+}
