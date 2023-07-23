@@ -28,26 +28,22 @@ const SearchCity = () => {
   var date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   var time = today.getHours() + ":" + today.getMinutes();
-  var zoneMin = today.getTimezoneOffset()%60;
+  var zoneMin = today.getTimezoneOffset() % 60;
   var zoneHur = Math.round(today.getTimezoneOffset() / 60);
-  var zone=""
+  var zone = "";
   if (zoneHur < 0) {
     zoneHur = zoneHur * -1;
     zoneMin = zoneMin * -1;
-     zone ="-"+ zoneHur + ":" + zoneMin +"GMT";
+    zone = "-" + zoneHur + ":" + zoneMin + "GMT";
   }
-  if (zoneHur > 0)zone = "+"+ zoneHur + ":" + zoneMin +"  GMT";
-  console.log(zone);
-;
-  var dateTime = date + "  " + time+"    "+zone;
+  if (zoneHur > 0) zone = "+" + zoneHur + ":" + zoneMin + "  GMT";
+  var dateTime = date + "  " + time + "    " + zone;
   const getWeather = useCallback(async () => {
     try {
-        console.log(`${api}${city}${unitGroup}${apiKey}${type}`)
       const res = await axios.get(`${api}${city}${unitGroup}${apiKey}${type}`);
       setWeather(res.data);
       console.log(res);
     } catch (err) {
-      console.log(err);
       setNotFound(1);
     }
   }, [city]);
@@ -67,7 +63,7 @@ const SearchCity = () => {
           {" "}
           <img src={nameApp} alt="Internet connection is poor" />{" "}
         </div>
-        <div className="date header">{dateTime}</div>
+        <div className=" date header app-header">{dateTime}</div>
         <div className="app-logo">
           <a href="/#">
             {" "}

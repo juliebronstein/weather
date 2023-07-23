@@ -1,33 +1,23 @@
 import { motion } from "framer-motion";
-import Loader from "./Loader";
-import NotFound from "./NotFound";
 // import images
-import sunset from "../icons/temp.svg";
-import humidity from "../icons/humidity.svg";
-import wind from "../icons/wind.svg";
-import pressure from "../icons/pressure.svg";
-import sunny from "../icons/sunny.svg";
-import night from "../icons/night.svg";
-import day from "../icons/day.svg";
-import cloudyNight from "../icons/cloudy-night.svg";
-import cloudy from "../icons/cloudy.svg";
-import perfectDay from "../icons/perfect-day.svg";
-import rain from "../icons/rain.svg";
-import rainNight from "../icons/rain-night.svg";
-import storm from "../icons/storm.svg";
-import smoke from "../icons/smoke.svg";
-import mist from "../icons/mist.svg";
+import { WeatherIcons } from "./icons";
+import {ariConditionIcons} from './icons'
+import { convertFToC } from "../utils/ConvertFToC";
+import { CurrentWeather } from "./weatherComponents/CurrentWeather";
+import { Header } from "./weatherComponents/Header";
 
 const Weather = ({ weather }) => {
-  const addr=weather.resolvedAddress.split(",")
-const weatherH=weather?.currentConditions.datetime.split(":")
-const weatherSunrise=weather?.currentConditions?.sunrise.split(":")
-const weatherSunset=weather?.currentConditions?.sunset.split(":")
-const icon=weather.currentConditions.icon
-const temp=((weather.currentConditions.temp-32)*5/9).toPrecision(4) 
-const isDay = (weatherH[0]>weatherSunrise[0] && weatherH[0]<weatherSunset[0])?"isDay":"isNight"
-console.log("icon",icon)
+  const addrarry=weather.resolvedAddress.split(",")
+const weatherHarry=weather?.currentConditions.datetime.split(":")
+const temp=convertFToC(weather.currentConditions.temp)+"°C"
+const realFeel=convertFToC(weather.currentConditions.feelslike)
+const arr=addrarry[0]+","+addrarry[1]
+const weatherH=weatherHarry[0]+":"+weatherHarry[1]
+// const weatherSunrise=weather?.currentConditions?.sunrise.split(":")
+// const weatherSunset=weather?.currentConditions?.sunset.split(":")
+// const isDay = (weatherH[0]>weatherSunrise[0] && weatherH[0]<weatherSunset[0])?true:false
 
+const icon=WeatherIcons[weather.currentConditions.icon]
   const weatherVariants = {
     hidden: {
       x: "1000vh",
@@ -43,24 +33,7 @@ console.log("icon",icon)
   //     {id:3 , name:'wind' , val:wind , num:weather?.wind.speed},
   //     {id:4 , name:'pressure' , val:pressure , num:weather?.main.pressure }
   // ];
-  const WeatherIcons = {
-    "01d": sunny,
-    "01n": night,
-    "02d": day,
-    "02n": cloudyNight,
-    "03d": cloudy,
-    "03n": cloudy,
-    "04d": perfectDay,
-    "04n": cloudyNight,
-    "09d": rain,
-    "09n": rainNight,
-    "partly-cloudy-day": rain,
-    "10n": rainNight,
-    "11d": storm,
-    "11n": storm,
-    "50d": smoke,
-    "50n": mist,
-  };
+
 
   weather && console.log(weather);
   //! media query
@@ -71,54 +44,41 @@ console.log("icon",icon)
       initial="hidden"
       animate="visible"
     >
-      <div className="d-flex flex-column justify-content-center ">
-        <div className="header">CURRENT WEATHER</div>
-        <div className="d-flex flex-column flex-md-row  justify-content-around col-12 title mb-4 mt-2  ">
+    
+      
+  <Header title="CURRENT WEATHER">
 
-
-          <div className="d-flex flex-row flex-lg-column  justify-content-center  col-lg-4">
-            <div className="title header-font">{addr[0]},{addr[1]}</div>
-            <div className="header title-font">{weatherH[0]}:{weatherH[1]}</div>
-          </div>
-       
-
-          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-4">
-            <div className="title">{temp}°C</div>
-            <div className="header">{weather.currentConditions.conditions}</div>
-          </div>
-       
-
-          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-4">
-          <img className='weather-img' src={WeatherIcons[weather.currentConditions.icon]} alt="" />
-          {console.log(WeatherIcons[weather.currentConditions.icon])}
-           
-          </div>
-       
-
-
-        </div>
-      </div>
-      <div className="d-flex flex-column justify-content-center mb-3 mt-3  ">
+         <CurrentWeather input1={arr} input2={weatherH}/>
+         <CurrentWeather input1={temp} input2={weather.currentConditions.conditions}/>
+         <CurrentWeather icon={icon} />
+</Header>
+<Header title="AIR CONDITIONS">
+<CurrentWeather input1={arr} input2={weatherH}/>
+</Header>
+      <div className="d-flex flex-column mb-3 mt-3 align-items-center justify-content-center ">
         <div className="header">AIR CONDITIONS</div>
         <div className="d-flex flex-column flex-md-row  justify-content-around col-12 title mb-4 mt-2 ">
-        <div className="d-flex flex-row flex-lg-column  justify-content-center  col-lg-3">
-            <div className="header">1dfgdfg</div>
+
+        <div className="d-flex flex-row flex-lg-column  justify-content-center  col-lg-3 align-items-center justify-content-center">
+            <div className="me-2 me-lg-0 header ">
+              <span className=""><img  className='col-2' src={ariConditionIcons["realfeel"]} alt="Internet connection is poor" /> 
+                </span>Real Feel</div>
+            <div className="title">{realFeel}</div>
+          </div>
+       
+
+          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-3 align-items-center justify-content-center">
+            <div className="me-2 me-lg-0 header">1dfgdfg</div>
             <div className="title">1fgdf</div>
           </div>
        
 
-          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-3">
-            <div className="header">1dfgdfg</div>
+          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-3 align-items-center justify-content-center">
+            <div className="me-2 me-lg-0 header">1dfgdfg</div>
             <div className="title">1fgdf</div>
           </div>
-       
-
-          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-3">
-            <div className="header">1dfgdfg</div>
-            <div className="title">1fgdf</div>
-          </div>
-          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-3">
-            <div className="header">1dfgdfg</div>
+          <div className="d-flex flex-row flex-lg-column justify-content-center  col-lg-3 align-items-center justify-content-center">
+            <div className="me-2 me-lg-0 header">1dfgdfg</div>
             <div className="title">1fgdf</div>
           </div>
        

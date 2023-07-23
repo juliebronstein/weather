@@ -4,10 +4,10 @@ body {
   font-family: 'Nunito', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: url(utils/img/Back.jpg); */
+  background: url(utils/img/Back.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background:-webkit-linear-gradient(64deg, rgba(4,12,51,1) 0.14%, rgba(5,70,168,1) 99.61% );
+  /* background:-webkit-linear-gradient(64deg, rgba(4,12,51,1) 0.14%, rgba(5,70,168,1) 99.61% ); */
 }
 
 code {
@@ -81,9 +81,15 @@ justify-content: space-between;
 
 }
 
-
+.air-condition-icon{
+  width: 10%;
+}
 .header{
-  color: rgba(255, 255, 255, 0.8) ;
+  color: rgba(198, 198, 201, 0.7) ;
+}
+.app-header{
+  color: rgba(111, 166, 211, 0.9) ;
+  font-size: 14px !important;
 }
 .title{
   color: white;
@@ -104,8 +110,8 @@ input.form-control:focus{
 }
 
 .weather-img {
-  height:100px;
-  width:100px;
+  height:70px;
+  width:70px;
 }
 
 .loader-img {
