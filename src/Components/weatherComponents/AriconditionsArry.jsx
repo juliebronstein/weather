@@ -1,7 +1,6 @@
 import { convertFToC } from "../../utils/ConvertFToC";
 
 export const AriconditionsArry=(weather)=>{
-  console.log("weather?.feelslike",weather?.feelslike)
     return [
         {
           id: 1,

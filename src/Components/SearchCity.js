@@ -11,6 +11,7 @@ import NotFound from "./NotFound";
 import Loader from "./Loader";
 import { FixDate } from "./weatherComponents/Date";
 import { api, apiKey, type, unitGroup } from "./service/weather";
+import MapShow from "./MapShow";
 
 const SearchCity = () => {
    const [weather, setWeather] = useState(null);
@@ -24,7 +25,7 @@ const SearchCity = () => {
     try {
       const res = await axios.get(`${api}${city}${unitGroup}${apiKey}${type}`);
       setWeather(res.data);
-      // console.log(res);
+      console.log(res);
     } catch (err) {
       setWeather("")
       setNotFound(1);
@@ -71,11 +72,13 @@ const SearchCity = () => {
           <button className="my-btn"> Search</button>
         </InputGroup>
       </form>
-      {weather ? (
+      {weather ? (<>
         <div className="d-flex justify-content-center flex-column flex-lg-row ">
           <Weather weather={weather} />
           <Forecast days={weather?.days} />
         </div>
+          <MapShow lat={weather.latitude} lng={weather.longitude}/>
+          </>
       ) : notFound ? (
         <NotFound />
       ) : (

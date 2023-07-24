@@ -103,8 +103,8 @@ width: 10%;
   font-size: 14px;
 }
 .app-header{
-  color: rgba(111, 166, 211, 0.9) ;
-  font-size: 14px !important;
+  color: rgba(212, 230, 245, 0.9) ;
+  font-size: 16px !important;
 }
 .title{
   color: white;
@@ -125,3 +125,9 @@ input.form-control:focus{
 }
 
 
+
+.map-container {
+  height: 400px;
+  width: 100%;
+
+}
