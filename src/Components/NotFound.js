@@ -5,10 +5,8 @@ const NotFound = () => {
     return ( 
         <div className="notFound d-flex flex-column align-items-center gap-3">
             <img className='not-found-img' src={sadCloud} alt="" />
-            <p className="fs-2 fw-bold">Not Found !</p>
-            <button className='my-btn p-2'
-            onClick={()=>history(-1)}>Go Back</button>
-        </div>
+            <p className="fs-2 fw-bold title">Not Found !</p>
+                    </div>
     );
 }
 export default NotFound;

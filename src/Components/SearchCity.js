@@ -11,6 +11,7 @@ import Weather from "./Weather";
 import Forecast from "./Forecast";
 import NotFound from "./NotFound";
 import Loader from "./Loader";
+import { FixDate } from "./weatherComponents/Date";
 
 const SearchCity = () => {
   // const apiKey="fe4feefa8543e06d4f3c66d92c61b69c"
@@ -23,34 +24,25 @@ const SearchCity = () => {
   const history = useNavigate();
   const [weather, setWeather] = useState(null);
   const [notFound, setNotFound] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [city, setCity] = useState(null);
-  const today = new Date();
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes();
-  var zoneMin = today.getTimezoneOffset() % 60;
-  var zoneHur = Math.round(today.getTimezoneOffset() / 60);
-  var zone = "";
-  if (zoneHur < 0) {
-    zoneHur = zoneHur * -1;
-    zoneMin = zoneMin * -1;
-    zone = "-" + zoneHur + ":" + zoneMin + "GMT";
-  }
-  if (zoneHur > 0) zone = "+" + zoneHur + ":" + zoneMin + "  GMT";
-  var dateTime = date + "  " + time + "    " + zone;
+  var dateTime=FixDate()
   const getWeather = useCallback(async () => {
+    setLoading(true)
     try {
       const res = await axios.get(`${api}${city}${unitGroup}${apiKey}${type}`);
       setWeather(res.data);
       console.log(res);
     } catch (err) {
+      setWeather("")
       setNotFound(1);
     }
+    setLoading(false)
   }, [city]);
+
   const submit = (e) => {
     e.preventDefault();
     getWeather();
-    history("/weather");
   };
   useEffect(() => {
     setWeather(null);
@@ -87,7 +79,7 @@ const SearchCity = () => {
       </form>
       {weather ? (
         <div className="d-flex justify-content-center flex-column flex-lg-row ">
-          <Weather weather={weather} notFound={notFound} />
+          <Weather weather={weather} />
           <Forecast weather={weather} notFound={notFound} />
         </div>
       ) : notFound ? (

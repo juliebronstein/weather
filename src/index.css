@@ -90,6 +90,12 @@ justify-content: space-between;
 .header{
   color: rgba(198, 198, 201, 0.7) ;
 }
+.value{
+  font-size: 13px;
+}
+.h-title{
+  font-size: 14px;
+}
 .app-header{
   color: rgba(111, 166, 211, 0.9) ;
   font-size: 14px !important;
@@ -112,10 +118,8 @@ input.form-control:focus{
     box-shadow: none;
 }
 
-.weather-img {
-  height:70px;
-  width:70px;
-}
+
+
 
 .loader-img {
   width: 200px;

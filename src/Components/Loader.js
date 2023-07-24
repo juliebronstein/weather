@@ -6,7 +6,7 @@ const Loader = () => {
             y:[10,-10],
             transition: {
                 yoyo:Infinity,
-                duration:0.7
+                duration:0.9
             }
         }
     }
