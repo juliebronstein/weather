@@ -73,8 +73,8 @@ const SearchCity = () => {
       </form>
       {weather ? (
         <div className="d-flex justify-content-center flex-column flex-lg-row ">
-          <Forecast days={weather?.days} />
           <Weather weather={weather} />
+          <Forecast days={weather?.days} />
         </div>
       ) : notFound ? (
         <NotFound />
