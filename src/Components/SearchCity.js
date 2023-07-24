@@ -1,9 +1,7 @@
-import perfectDay from "../icons/perfect-day.svg";
+
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import axios from "axios";
 import nameApp from "../utils/img/name.png";
 import logo from "../utils/img/github.png";
@@ -12,35 +10,31 @@ import Forecast from "./Forecast";
 import NotFound from "./NotFound";
 import Loader from "./Loader";
 import { FixDate } from "./weatherComponents/Date";
+import { api, apiKey, type, unitGroup } from "./service/weather";
 
 const SearchCity = () => {
-  // const apiKey="fe4feefa8543e06d4f3c66d92c61b69c"
-  // const api ="https://api.openweathermap.org/data/2.5/weather?q="
-  const apiKey = "&key=N9LUTKS5U4DFC6MCLWYAW9SF2";
-  const api =
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
-  const unitGroup = "?unitGroup=us";
-  const type = "&contentType=json";
-  const history = useNavigate();
-  const [weather, setWeather] = useState(null);
+   const [weather, setWeather] = useState(null);
   const [notFound, setNotFound] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState("starter");
   const [city, setCity] = useState(null);
   var dateTime=FixDate()
+  
   const getWeather = useCallback(async () => {
-    setLoading(true)
+   
     try {
       const res = await axios.get(`${api}${city}${unitGroup}${apiKey}${type}`);
       setWeather(res.data);
-      console.log(res);
+      // console.log(res);
     } catch (err) {
       setWeather("")
       setNotFound(1);
     }
-    setLoading(false)
+    setLoading("starter")
   }, [city]);
 
   const submit = (e) => {
+    setWeather("")
+    setLoading("loading")
     e.preventDefault();
     getWeather();
   };
@@ -79,13 +73,13 @@ const SearchCity = () => {
       </form>
       {weather ? (
         <div className="d-flex justify-content-center flex-column flex-lg-row ">
+          <Forecast days={weather?.days} />
           <Weather weather={weather} />
-          <Forecast weather={weather} notFound={notFound} />
         </div>
       ) : notFound ? (
         <NotFound />
       ) : (
-        <Loader />
+        <Loader type={loading}/>
       )}
     </>
   );

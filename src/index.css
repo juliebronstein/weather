@@ -119,13 +119,3 @@ input.form-control:focus{
 }
 
 
-
-
-.loader-img {
-  width: 200px;
-  height: 200px;
-}
-.not-found-img {
-  width: 200px;
-  height: 150px;
-}

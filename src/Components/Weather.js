@@ -5,7 +5,8 @@ import { CurrentWeather } from "./weatherComponents/CurrentWeather";
 import { Header } from "./weatherComponents/Header";
 import { AriCondition } from "./weatherComponents/AriCondition";
 import { HourlyCart } from "./weatherComponents/HourlyCart";
-
+import { container,item } from "../utils/Animate";
+import { AriconditionsArry } from "./weatherComponents/AriconditionsArry";
 const Weather = ({ weather }) => {
   const parser = (time, count) => {
     const x = time.slice(0, count);
@@ -29,22 +30,7 @@ const Weather = ({ weather }) => {
       })
     }
   });
-  // const weatherSunrise=weather?.currentConditions?.sunrise.split(":")
-  // const weatherSunset=weather?.currentConditions?.sunset.split(":")
-  // const isDay = (weatherH[0]>weatherSunrise[0] && weatherH[0]<weatherSunset[0])?true:false
-  const weatherVariants = {
-    hidden: {
-      x: "1000vh",
-    },
-    visible: {
-      x: 0,
-      transition: { duration: 1.5, type: "spring" },
-    },
-  };
-
-
-
-
+  
   var currentWeather = [
     { id: 1, title: addr, value: weatherH },
     {
@@ -54,38 +40,23 @@ const Weather = ({ weather }) => {
     },
     { id: 3, icon: WeatherIcons[weather.currentConditions.icon] },
   ];
-  var ariCondition = [
-    {
-      id: 1,
-      title: "Real Feel",
-      value: convertFToC(weather.currentConditions?.feelslike) ,
-    },
-    {
-      id: 2,
-      title: "Wind",
-      value: weather.currentConditions?.windspeed + " m/s",
-    },
-    {
-      id: 4,
-      title: "Humidity",
-      value: weather.currentConditions?.humidity + " %",
-    },
-    {
-      id: 3,
-      title: "Clouds",
-      value: weather.currentConditions?.cloudcover + " %",
-    },
-  ];
+  var ariCondition  =AriconditionsArry(weather.currentConditions)
+
 
   //! media query
   return (
     <motion.div
       className="weather-content me-lg-1 mb-sm-1 col-12  col-lg-6 d-flex flex-column 
       justify-content-center text-center p-3 g-3"
-      variants={weatherVariants}
+      variants={container}
       initial="hidden"
       animate="visible"
     >
+      <motion.div
+      variants={item}
+      initial="hidden"
+      animate="visible"
+      >
       <Header title="CURRENT WEATHER">
         {currentWeather.map((cw) => {
           return (
@@ -98,6 +69,13 @@ const Weather = ({ weather }) => {
           );
         })}
       </Header>
+      </motion.div>
+      <motion.div
+      variants={item}
+      initial="hidden"
+      animate="visible"
+      >
+
       <Header title="AIR CONDITIONS">
         {ariCondition.map((ac) => {
           return (
@@ -106,18 +84,26 @@ const Weather = ({ weather }) => {
               value={ac.value}
               key={ac.title + ac.id}
             />
-          );
-        })}
+            );
+          })}
       </Header>
+        </motion.div>
+        <motion.div
+      variants={item}
+      initial="hidden"
+      animate="visible"
+      >
+
       <Header title="TODAY'S FORECAST" subtitle={`${hourlyCart.length} available forecasts`} className="justify-content-center">
       {hourlyCart.length>0&& 
       hourlyCart?.map(i=>{
         return(
           
           <HourlyCart title={i.title} value={i.value} icon={i.icon}  key={i.id+"_index"}/>
-        )
-      })}
+          )
+        })}
       </Header>
+        </motion.div>
     </motion.div>
   );
 };
