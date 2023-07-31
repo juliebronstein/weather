@@ -26,7 +26,7 @@ useEffect(() => {
           lat: lat,
           lng: lng
         },
-        zoom: 2
+        zoom: 7
       };
 
 

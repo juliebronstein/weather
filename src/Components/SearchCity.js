@@ -11,13 +11,12 @@ import NotFound from "./NotFound";
 import Loader from "./Loader";
 import { FixDate } from "./weatherComponents/Date";
 import { api, apiKey, type, unitGroup } from "./service/weather";
-import MapShow from "./MapShow";
 
 const SearchCity = () => {
    const [weather, setWeather] = useState(null);
   const [notFound, setNotFound] = useState(0);
   const [loading, setLoading] = useState("starter");
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState("");
   var dateTime=FixDate()
   
   const getWeather = useCallback(async () => {
@@ -40,22 +39,23 @@ const SearchCity = () => {
     getWeather();
   };
   useEffect(() => {
+    setCity("")
     setWeather(null);
     setNotFound(0);
   }, []);
   return (
     <>
-      <div className="fs-4 navbar-brand">
-        <div className="app-name">
+      <div className="fs-4 navbar-brand d-flex flex-row justify-space-between align-baseline">
+        <div className="app-name col-sm-3 col-md-1">
           {" "}
           <img src={nameApp} alt="Internet connection is poor" />{" "}
         </div>
-        <div className=" date header app-header">{dateTime}</div>
-        <div className="app-logo">
-          <a href="/#">
+        <div className="date header app-header text-wrap col-6">{dateTime}</div>
+        <div className="col-sm-2 col-md-1 ">
+          <a href="https://github.com/samanta580/weather">
             {" "}
             <img
-              className="logo"
+              className="col-6"
               src={logo}
               alt="Internet connection is poor"
             />{" "}
@@ -77,7 +77,7 @@ const SearchCity = () => {
           <Weather weather={weather} />
           <Forecast days={weather?.days} />
         </div>
-          <MapShow lat={weather.latitude} lng={weather.longitude}/>
+          {/* <MapShow lat={weather.latitude} lng={weather.longitude}/> */}
           </>
       ) : notFound ? (
         <NotFound />

@@ -46,7 +46,7 @@ const Weather = ({ weather }) => {
   //! media query
   return (
     <motion.div
-      className="weather-content me-lg-1 mb-sm-1 col-12 col-lg-6 d-flex flex-column 
+      className="weather-content me-lg-1 mb-1 col-12 col-lg-6 d-flex flex-column 
       justify-content-center text-center p-3 g-3"
       variants={container}
       initial="hidden"

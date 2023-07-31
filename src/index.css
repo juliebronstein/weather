@@ -27,29 +27,26 @@ justify-content: space-between;
 
 }
 .app-name{
-  width: 13%;
     }
     .app-name img{
     max-width:100%;
     }
-    .app-logo{
-      width: 5%;
-    }
-    .app-logo img{
-      max-width: 50%;
-    }
+
   .navbar-brand .date{
-    width: 70%;
-    font-size: 14px;
+    /* width: 70%; */
+    /* font-size: 14px; */
     
+  }
+  .margin-r-15{
+    margin-right: -15%;
   }
 .App {
   border: 1px solid rgb(167, 182, 231);
   border-radius: 20px;
   overflow: hidden;
-  margin: 40px 50px;
+  margin: 1%;
   box-shadow:0 5px 50px 2px rgb(96, 111, 161);
-  padding: 30px 30px;
+  padding: 1%;
   /* -webkit-box-shadow: 0 10px 50px px rgba(12,12,12,12); */
 }
 .header-font{
@@ -68,7 +65,7 @@ justify-content: space-between;
 font-size: 15px;
 }
 .font-size-12 img{
-width: 10%;
+/* width: 10%; */
 }
 .week-days{
   align-items: start;

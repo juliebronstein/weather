@@ -47,17 +47,17 @@ const Forecast = ({ days }) => {
       {forecastDays.map((fd) => {
         return (
           <>
-            <DailyForecast daily={fd} key={fd.datetime+"_"+fd.id+"-"}>
+            <DailyForecast daily={fd} key={fd.conditions+"_"+fd.id+"_+"}>
               <div className="d-flex flex-row flex-wrap ">
                 {" "}
-                {fd.data.map((i) => {
+                {fd.data.map((i,index) => {
                   return (
                     <AriCondition
                       icon={i.icon}
                       title={i.value}
                       className="col-6 col-lg-6 font-size-12 mb-2 mt-2 title"
-                      key={i.id+"_index"+i.value }
-                    ></AriCondition>
+                      key={i.id+"_index"+i.value+index }
+                    > </AriCondition>
                   );
                 })}
               </div>
