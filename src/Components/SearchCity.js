@@ -1,4 +1,3 @@
-
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import { useCallback, useEffect, useState } from "react";
@@ -24,7 +23,6 @@ const SearchCity = () => {
     try {
       const res = await axios.get(`${api}${city}${unitGroup}${apiKey}${type}`);
       setWeather(res.data);
-      console.log(res);
     } catch (err) {
       setWeather("")
       setNotFound(1);
@@ -77,7 +75,6 @@ const SearchCity = () => {
           <Weather weather={weather} />
           <Forecast days={weather?.days} />
         </div>
-          {/* <MapShow lat={weather.latitude} lng={weather.longitude}/> */}
           </>
       ) : notFound ? (
         <NotFound />

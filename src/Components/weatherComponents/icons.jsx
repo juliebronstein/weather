@@ -1,5 +1,4 @@
 
-//Weather icons
 import clearday from "../../utils/img/icons/clear-day.png";
 import clearnight from "../../utils/img/icons/clear-night.png";
 import cloudy from "../../utils/img/icons/cloudy.png";
@@ -22,7 +21,6 @@ import thundershowersday from "../../utils/img/icons/thunder-showers-day.png";
 import thundershowersnight from "../../utils/img/icons/thunder-showers-night.png";
 import thunder from "../../utils/img/icons/thunder.png";
 import wind from "../../utils/img/icons/wind.png";
-//Air conditional icons
 import cloud from "../../utils/img/ariconditiomicon/cloud.png";
 import humidity from "../../utils/img/ariconditiomicon/humidi.png";
 import realfeel from "../../utils/img/ariconditiomicon/temg.png";

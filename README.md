@@ -1,22 +1,21 @@
 # Weather App React
 
 ## 📌 Live Demo
-https://weather-app-react-x4t1.onrender.com
 
 ### APIs Used
-[Open Weather APIs](https://openweathermap.org/)
+[Open Weather APIs]
+(https://weather.visualcrossing.com)
 
-https://openweathermap.org/current
+
 
 ### API Info
 * Method: `GET`
-* URL: `https://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid={API_KEY}`
+* URL: `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline`
 
 ## 🚀 What technologies were used?
 
 - `react.js (create-react-app)`
 - `react-dom-router`
-- `axios`
 - `react-bootstap`
 - `state management using Context API`
 
@@ -26,7 +25,7 @@ From your command line, first clone this repo:
 
 ```
 # Clone this repository
-$ https://github.com/0mar-helal/weather-app-react.git
+$ https://github.com/juliebronstein/weather.git
 
 # Go into the repository
 $ cd weather-app-react
